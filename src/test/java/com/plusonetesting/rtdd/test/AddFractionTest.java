@@ -32,4 +32,13 @@ public class AddFractionTest {
     public void negativePlusPositiveWithNegativeResult() {
         assertThat(new Fraction(-3).plus(new Fraction(1)).intValue(), is(-2));
     }
+
+    @Test
+    public void nonTrivialButCommonDenominatior() {
+
+        Fraction sum = new Fraction(1, 5).plus(new Fraction(2, 5));
+
+        assertThat(sum.getNumerator(), is(3));
+        assertThat(sum.getDenominator(), is(5));
+    }
 }
