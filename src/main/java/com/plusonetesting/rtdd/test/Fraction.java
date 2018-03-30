@@ -1,6 +1,6 @@
 package com.plusonetesting.rtdd.test;
 
-public class Fraction{
+public class Fraction {
 
     private int integerValue;
 
@@ -9,7 +9,8 @@ public class Fraction{
     }
 
     public Fraction plus(Fraction that) {
-        return this;
+        return (new Fraction(this.integerValue + that.integerValue));
+
     }
 
     public int intValue() {
