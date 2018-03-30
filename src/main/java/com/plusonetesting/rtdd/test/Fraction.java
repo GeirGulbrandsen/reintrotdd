@@ -4,25 +4,23 @@ public class Fraction {
 
     private int numerator;
     private int denominator;
-    private int integerValue;
 
     public Fraction(int integerValue) {
-        this.integerValue = integerValue;
+        this.numerator = integerValue;
     }
 
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
-        this.integerValue = numerator;
         this.denominator = denominator;
     }
 
 
     public Fraction plus(Fraction that) {
-        return (new Fraction(this.integerValue + that.integerValue, denominator));
+        return (new Fraction(this.numerator + that.numerator, denominator));
     }
 
     public int intValue() {
-        return integerValue;
+        return numerator;
     }
 
     public int getNumerator() {
