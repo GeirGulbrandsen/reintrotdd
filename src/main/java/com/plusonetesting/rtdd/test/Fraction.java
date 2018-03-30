@@ -18,7 +18,7 @@ public class Fraction {
 
 
     public Fraction plus(Fraction that) {
-        return (new Fraction(this.integerValue + that.integerValue, 1));
+        return (new Fraction(this.integerValue + that.integerValue, denominator));
     }
 
     public int intValue() {
@@ -26,10 +26,10 @@ public class Fraction {
     }
 
     public int getNumerator() {
-        return 3;
+        return numerator;
     }
 
     public int getDenominator() {
-        return 5;
+        return denominator;
     }
 }
