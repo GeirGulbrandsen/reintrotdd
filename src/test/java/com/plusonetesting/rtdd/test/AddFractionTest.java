@@ -31,4 +31,10 @@ public class AddFractionTest {
         Fraction sum = new Fraction(3).plus(new Fraction(4));
         assertThat(sum.intValue(), is(7));
     }
+
+    @Test
+    public void negativePlusPositiveWithNegativeResult() {
+        Fraction sum = new Fraction(-3).plus(new Fraction(1));
+        assertThat(sum.intValue(), is(-2));
+    }
 }
