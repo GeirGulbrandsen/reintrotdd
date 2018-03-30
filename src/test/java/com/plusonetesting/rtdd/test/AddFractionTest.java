@@ -14,4 +14,11 @@ public class AddFractionTest {
         Fraction sum = new Fraction(0).plus(new Fraction(0));
         assertThat(sum.intValue() ,is(0));
     }
+
+    @Test
+    public void threePlusZeroShouldBeThree() {
+
+        Fraction sum = new Fraction(3).plus(new Fraction(0));
+        assertThat(sum.intValue(), is(3));
+    }
 }
