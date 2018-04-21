@@ -2,8 +2,8 @@ package com.plusonetesting.rtdd.test;
 
 public class Fraction {
 
-    private int numerator;
-    private int denominator;
+    private final int numerator;
+    private final int denominator;
 
     public Fraction(int integerValue) {
         this(integerValue, 1);
@@ -14,23 +14,9 @@ public class Fraction {
         this.denominator = denominator;
     }
 
-
     public Fraction plus(Fraction that) {
         return (new Fraction(this.numerator + that.numerator, denominator));
     }
-
-    public int intValue() {
-        return numerator;
-    }
-
-    public int getNumerator() {
-        return numerator;
-    }
-
-    public int getDenominator() {
-        return denominator;
-    }
-
 
     @Override
     public String toString() {
