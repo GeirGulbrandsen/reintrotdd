@@ -41,4 +41,6 @@ public class AddFractionTest {
         assertThat(sum.getNumerator(), is(3));
         assertThat(sum.getDenominator(), is(5));
     }
+
+
 }
