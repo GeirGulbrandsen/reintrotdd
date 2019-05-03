@@ -15,12 +15,18 @@ public class Fraction {
     }
 
     public Fraction plus(Fraction that) {
-        return (new Fraction(this.numerator + that.numerator, denominator));
+        if (this.denominator != that.denominator) {
+            return new Fraction(this.numerator * that.denominator + that.numerator * this.denominator,
+                    this.denominator * that.denominator);
+        } else {
+            return (new Fraction(this.numerator + that.numerator, denominator));
+        }
+
     }
 
     @Override
     public String toString() {
-        return String.format("%d/%d", numerator, denominator );
+        return String.format("%d/%d", numerator, denominator);
     }
 
     @Override
