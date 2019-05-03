@@ -2,6 +2,8 @@ package com.plusonetesting.rtdd.test;
 
 import org.junit.Test;
 
+import javax.xml.stream.FactoryConfigurationError;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -34,8 +36,9 @@ public class AddFractionTest {
 
     @Test
     public void nonTrivialButCommonDenominator() {
-        assertEquals(new Fraction(3, 5),
-                new Fraction(1, 5).plus(new Fraction(2, 5)));
+        final Fraction sum = new Fraction((1), 5).plus(new Fraction(2, 5));
+        assertEquals(3, sum.getNumerator());
+        assertEquals(5, sum.getDenominator());
     }
 
 

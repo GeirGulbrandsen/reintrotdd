@@ -31,4 +31,12 @@ public class Fraction {
         }
         return false;
     }
+
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
+    }
 }
