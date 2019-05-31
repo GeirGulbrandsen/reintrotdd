@@ -1,6 +1,8 @@
 package com.plusonetesting.rtdd.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -40,4 +42,32 @@ public class AddFractionTest {
     public void differentDenominatorsWithoutReducing() {
         assertEquals(new Fraction(5,6), new Fraction(1,2).plus(new Fraction(1,3)));
     }
+
+    @Test
+    public void oneDenominatorIsAMultipleOfTheOther() {
+        assertEquals(new Fraction(11, 8), new Fraction(3,4).plus(new Fraction(5,8 )));
+    }
+
+    @Test
+    public void comnmonFactorInDenominators() {
+        assertEquals(new Fraction(11, 18), new Fraction(1,6).plus(new Fraction(4,9)));
+    }
+
+    @Test
+    public void reduceResultEvenWhenDenominatorsAreTheSame() {
+        assertEquals(new Fraction(3,2), new Fraction(3,4).plus(new Fraction(3,4)));
+    }
+
+    @Test
+    public void negativeFractionAndReducing() {
+        assertEquals(new Fraction(1,2), new Fraction(-1,4).plus(new Fraction(3,4)));
+        assertEquals(new Fraction(-1,8), new Fraction(3,8).plus(new Fraction(-1,2)));
+    }
+
+    @Test
+    @Ignore( "Constructor doesn't yet avoid negative denominators")
+    public void negativeSignsEverywhere() {
+        assertEquals(new Fraction(1,2), new Fraction(1,-4).plus(new Fraction(-3,-4)));
+    }
 }
+
