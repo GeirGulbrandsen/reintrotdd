@@ -20,4 +20,9 @@ public class ReduceFractionTest {
     public void reduceToWholeNumber() {
         assertEquals(new Fraction(6), new Fraction(24,4));
     }
+
+    @Test
+    public void reduceZero() {
+        assertEquals(new Fraction(0), new Fraction(0, 123556));
+    }
 }
