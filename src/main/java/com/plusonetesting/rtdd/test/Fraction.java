@@ -10,8 +10,8 @@ public class Fraction {
     }
 
     public Fraction(int numerator, int denominator) {
-        this.numerator = numerator;
-        this.denominator = denominator;
+        this.numerator = numerator / NumberTheory.gcd(denominator, numerator);
+        this.denominator = denominator / NumberTheory.gcd(denominator, numerator);
     }
 
     public Fraction plus(Fraction that) {
