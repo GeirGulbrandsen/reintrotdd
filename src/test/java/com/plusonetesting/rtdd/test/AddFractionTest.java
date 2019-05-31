@@ -1,9 +1,6 @@
 package com.plusonetesting.rtdd.test;
 
 import org.junit.Test;
-
-import javax.xml.stream.FactoryConfigurationError;
-
 import static org.junit.Assert.assertEquals;
 
 
