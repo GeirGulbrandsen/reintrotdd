@@ -3,6 +3,9 @@ package com.plusonetesting.rtdd.pointofsale;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -66,10 +69,15 @@ public class SellOneItemTest {
             if ("".equals(barcode))
                 display.setText("Scanning error: empty barcode");
             else {
+                final Map<String, String> pricesByBarcode = new HashMap<String, String>() {{
+                    put("12345", "$7.95");
+                    put("23456", "$12.50");
+                                    }};
+
                 if ("12345".equals(barcode))
-                    display.setText("$7.95");
+                    display.setText(pricesByBarcode.get(barcode));
                 else if ("23456".equals(barcode))
-                    display.setText("$12.50");
+                    display.setText(pricesByBarcode.get(barcode));
                 else
                     display.setText("Product not found for " + barcode);
             }
