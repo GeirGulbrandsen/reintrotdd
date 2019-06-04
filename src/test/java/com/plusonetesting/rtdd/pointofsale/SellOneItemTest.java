@@ -17,13 +17,12 @@ public class SellOneItemTest {
     }
 
     @Test
-    @Ignore
     public void anotherProductFound() {
         final Display display = new Display();
         final Sale sale = new Sale(display);
 
         sale.onBarcode("23456");
-        assertEquals("12.50", display.getText());
+        assertEquals("$12.50", display.getText());
     }
 
     public static class Display {
@@ -44,8 +43,11 @@ public class SellOneItemTest {
             this.display = display;
         }
 
-        public void onBarcode(String s) {
-            display.setText("$7.95");
+        public void onBarcode(String barcode) {
+            if ("12345".equals(barcode))
+                display.setText("$7.95");
+            else
+                display.setText("$12.50");
         }
     }
 }
