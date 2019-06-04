@@ -59,8 +59,7 @@ public class SellOneItemTest {
             else if ("23456".equals(barcode))
                 display.setText("$12.50");
             else
-                display.setText("Product not found for " +
-                        barcode);
+                display.setText("Product not found for " + barcode);
         }
     }
 }
