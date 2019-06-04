@@ -72,9 +72,8 @@ public class SellOneItemTest {
                 final Map<String, String> pricesByBarcode = new HashMap<String, String>() {{
                     put("12345", "$7.95");
                     put("23456", "$12.50");
-                                    }};
-
-                if ("12345".equals(barcode) || "23456".equals(barcode))
+                }};
+                if (pricesByBarcode.containsKey(barcode))
                     display.setText(pricesByBarcode.get(barcode));
                 else
                     display.setText("Product not found for " + barcode);
