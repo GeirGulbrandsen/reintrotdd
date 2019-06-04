@@ -1,4 +1,4 @@
-package com.plusonetesting.rtdd.test;
+package com.plusonetesting.rtdd.addfractions;
 
 import org.junit.Test;
 
