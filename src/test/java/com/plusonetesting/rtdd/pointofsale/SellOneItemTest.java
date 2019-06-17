@@ -1,6 +1,5 @@
 package com.plusonetesting.rtdd.pointofsale;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -13,7 +12,10 @@ public class SellOneItemTest {
     @Test
     public void productFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(display);
+        final Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("23456", "$12.50");
+        }});
 
         sale.onBarcode("12345");
         assertEquals("$7.95", display.getText());
@@ -22,7 +24,10 @@ public class SellOneItemTest {
     @Test
     public void anotherProductFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(display);
+        final Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("23456", "$12.50");
+        }});
 
         sale.onBarcode("23456");
         assertEquals("$12.50", display.getText());
@@ -31,7 +36,10 @@ public class SellOneItemTest {
     @Test
     public void productNotFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(display);
+        final Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("23456", "$12.50");
+        }});
 
         sale.onBarcode("99999");
         assertEquals("Product not found for 99999", display.getText());
@@ -40,7 +48,10 @@ public class SellOneItemTest {
     @Test
     public void emptyBarcode() {
         final Display display = new Display();
-        final Sale sale = new Sale(display);
+        final Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("23456", "$12.50");
+        }});
 
         sale.onBarcode("");
         assertEquals("Scanning error: empty barcode", display.getText());
@@ -62,12 +73,9 @@ public class SellOneItemTest {
         private Display display;
         private Map<String, String> pricesByBarcode;
 
-        public Sale(Display display) {
+        public Sale(Display display, Map<String, String> pricesByBarcode) {
             this.display = display;
-            pricesByBarcode = new HashMap<String, String>() {{
-                put("12345", "$7.95");
-                put("23456", "$12.50");
-            }};
+            this.pricesByBarcode = pricesByBarcode;
         }
 
         public void onBarcode(String barcode) {
