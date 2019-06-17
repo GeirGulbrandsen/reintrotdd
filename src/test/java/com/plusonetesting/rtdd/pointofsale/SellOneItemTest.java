@@ -15,7 +15,7 @@ public class SellOneItemTest {
     private Sale sale;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         display = new Display();
         sale = new Sale(display, new HashMap<String, String>() {{
             put("12345", "$7.95");
@@ -75,13 +75,17 @@ public class SellOneItemTest {
             }
 
             if (pricesByBarcode.containsKey(barcode))
-                displayPrice(barcode);
+                displayPrice(findPrice(barcode));
             else
                 displayProductNotFoundMessage(barcode);
         }
 
-        private void displayPrice(String barcode) {
-            display.setText(pricesByBarcode.get(barcode));
+        private void displayPrice(String priceAsText) {
+            display.setText(priceAsText);
+        }
+
+        private String findPrice(String barcode) {
+            return pricesByBarcode.get(barcode);
         }
 
         private void displayProductNotFoundMessage(String barcode) {
