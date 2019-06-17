@@ -48,10 +48,7 @@ public class SellOneItemTest {
     @Test
     public void emptyBarcode() {
         final Display display = new Display();
-        final Sale sale = new Sale(display, new HashMap<String, String>() {{
-            put("12345", "$7.95");
-            put("23456", "$12.50");
-        }});
+        final Sale sale = new Sale(display, null);
 
         sale.onBarcode("");
         assertEquals("Scanning error: empty barcode", display.getText());
