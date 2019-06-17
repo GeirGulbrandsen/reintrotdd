@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class SellOneItemTest {
 
@@ -17,10 +16,10 @@ public class SellOneItemTest {
     @Before
     public void setUp() {
         display = new Display();
-        sale = new Sale(display, new HashMap<String, String>() {{
+        sale = new Sale(display, new Catalog(new HashMap<String, String>() {{
             put("12345", "$7.95");
             put("23456", "$12.50");
-        }});
+        }}));
     }
 
     @Test
@@ -57,45 +56,54 @@ public class SellOneItemTest {
         public void setText(String text) {
             this.text = text;
         }
+
+        public void displayPrice(String priceAsText) {
+            setText(priceAsText);
+        }
+
+        public void displayProductNotFoundMessage(String barcode) {
+            setText("Product not found for " + barcode);
+        }
+
+        public void displayEmptyBarcodeMessage() {
+            setText("Scanning error: empty barcode");
+        }
     }
 
     public static class Sale {
         private Display display;
-        private Map<String, String> pricesByBarcode;
+        private Catalog catalog;
 
-        public Sale(Display display, Map<String, String> pricesByBarcode) {
+        public Sale(Display display, Catalog catalog) {
             this.display = display;
-            this.pricesByBarcode = pricesByBarcode;
+            this.catalog = catalog;
         }
 
         public void onBarcode(String barcode) {
             if ("".equals(barcode)) {
-                displayEmptyBarcodeMessage();
+                display.displayEmptyBarcodeMessage();
                 return;
             }
 
-            final String priceAsText = findPrice(barcode);
+            final String priceAsText = catalog.findPrice(barcode);
             if (priceAsText==null) {
-                displayProductNotFoundMessage(barcode);
+                display.displayProductNotFoundMessage(barcode);
             } else {
-                displayPrice(priceAsText);
+                display.displayPrice(priceAsText);
             }
         }
 
-        private void displayPrice(String priceAsText) {
-            display.setText(priceAsText);
+    }
+
+    public static class Catalog {
+        private final Map<String, String> pricesByBarcode;
+
+        public Catalog(Map<String, String> pricesByBarcode) {
+            this.pricesByBarcode = pricesByBarcode;
         }
 
-        private String findPrice(String barcode) {
+        public String findPrice(String barcode) {
             return pricesByBarcode.get(barcode);
-        }
-
-        private void displayProductNotFoundMessage(String barcode) {
-            display.setText("Product not found for " + barcode);
-        }
-
-        private void displayEmptyBarcodeMessage() {
-            display.setText("Scanning error: empty barcode");
         }
     }
 }
