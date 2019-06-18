@@ -2,9 +2,9 @@ package com.plusonetesting.rtdd.pointofsale;
 
 public class Sale {
     private Display display;
-    private ScanOneItemTest.Catalog catalog;
+    private Catalog catalog;
 
-    public Sale(ScanOneItemTest.Catalog catalog, Display display) {
+    public Sale(Catalog catalog, Display display) {
         this.display = display;
         this.catalog = catalog;
     }

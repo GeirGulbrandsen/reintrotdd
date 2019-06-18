@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class ScanOneItemTest {
@@ -46,15 +45,4 @@ public class ScanOneItemTest {
         assertEquals("Scanning error: empty barcode", display.getText());
     }
 
-    public static class Catalog {
-        private final Map<String, String> pricesByBarcode;
-
-        public Catalog(Map<String, String> pricesByBarcode) {
-            this.pricesByBarcode = pricesByBarcode;
-        }
-
-        public String findPrice(String barcode) {
-            return pricesByBarcode.get(barcode);
-        }
-    }
 }
