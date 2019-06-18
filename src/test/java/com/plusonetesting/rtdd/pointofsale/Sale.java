@@ -3,7 +3,7 @@ package com.plusonetesting.rtdd.pointofsale;
 public class Sale {
     private Display display;
     private Catalog catalog;
-    private String price;
+    private String scannedPrice;
 
     public Sale(Catalog catalog, Display display) {
         this.display = display;
@@ -16,18 +16,18 @@ public class Sale {
             return;
         }
 
-        price = catalog.findPrice(barcode);
-        if (price ==null) {
+        scannedPrice = catalog.findPrice(barcode);
+        if (scannedPrice ==null) {
             display.displayProductNotFoundMessage(barcode);
         } else {
-            display.displayPrice(price);
+            display.displayPrice(scannedPrice);
         }
     }
 
     public void onTotal() {
-        boolean saleInProgress = (price != null);
+        boolean saleInProgress = (scannedPrice != null);
         if (saleInProgress) {
-            display.displayPurchaseTotal(price);
+            display.displayPurchaseTotal(scannedPrice);
         } else {
             display.displayNoSaleInProgressMessage();
         }
