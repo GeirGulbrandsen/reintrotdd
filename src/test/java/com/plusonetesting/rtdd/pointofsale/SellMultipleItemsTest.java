@@ -8,7 +8,7 @@ public class SellMultipleItemsTest {
     @Test
     public void zeroItems() {
         Display display = new Display();
-        Sale sale = new Sale(display,null);
+        Sale sale = new Sale(null, display);
 
         sale.onTotal();
 

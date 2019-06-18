@@ -16,10 +16,10 @@ public class SellOneItemTest {
     @Before
     public void setUp() {
         display = new Display();
-        sale = new Sale(display, new Catalog(new HashMap<String, String>() {{
+        sale = new Sale(new Catalog(new HashMap<String, String>() {{
             put("12345", "$7.95");
             put("23456", "$12.50");
-        }}));
+        }}), display);
     }
 
     @Test

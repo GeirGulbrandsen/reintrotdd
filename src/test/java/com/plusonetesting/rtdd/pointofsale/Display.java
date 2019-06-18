@@ -22,4 +22,8 @@ public class Display {
     public void setText(String thatText) {
         this.text = thatText;
     }
+
+    public void displayNoSaleInProgressMessage() {
+        setText("No sale in progress. Try scanning a product.");
+    }
 }
