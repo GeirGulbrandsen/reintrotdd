@@ -2,11 +2,11 @@ package com.plusonetesting.rtdd.pointofsale;
 
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 
 public class SellOneItemTest {
 
@@ -44,26 +44,6 @@ public class SellOneItemTest {
     public void emptyBarcode() {
         sale.onBarcode("");
         assertEquals("Scanning error: empty barcode", display.getText());
-    }
-
-    public static class Display {
-        private String text;
-
-        public String getText() {
-            return text;
-        }
-
-        public void displayPrice(String priceAsText) {
-            this.text = priceAsText;
-        }
-
-        public void displayProductNotFoundMessage(String barcode) {
-            this.text = "Product not found for " + barcode;
-        }
-
-        public void displayEmptyBarcodeMessage() {
-            this.text = "Scanning error: empty barcode";
-        }
     }
 
     public static class Sale {
