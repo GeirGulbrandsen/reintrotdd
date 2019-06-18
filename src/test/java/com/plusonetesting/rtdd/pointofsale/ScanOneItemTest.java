@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SellOneItemTest {
+public class ScanOneItemTest {
 
     private Display display;
     private Sale sale;
