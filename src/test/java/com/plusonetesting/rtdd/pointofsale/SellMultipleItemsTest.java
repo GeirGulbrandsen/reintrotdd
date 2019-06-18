@@ -2,7 +2,6 @@ package com.plusonetesting.rtdd.pointofsale;
 
 import org.junit.Test;
 
-import java.awt.event.InputMethodEvent;
 import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
@@ -20,7 +19,7 @@ public class SellMultipleItemsTest {
 
     @Test
     public void oneItemFound() {
-        Catalog catalog = new Catalog(Collections.singletonMap("12345", "$6.50"));
+        Catalog catalog = new Catalog(Collections.singletonMap("12345", "$6.50"), Collections.singletonMap("12345", 650));
         Display display = new Display();
         Sale sale = new Sale(catalog, display);
         sale.onBarcode("12345");
@@ -33,7 +32,7 @@ public class SellMultipleItemsTest {
     @Test
     public void oneItemNotFound() {
         Display display = new Display();
-        Catalog catalog = new Catalog(Collections.singletonMap("12345", "$6.50"));
+        Catalog catalog = new Catalog(Collections.singletonMap("12345", "$6.50"), Collections.singletonMap("12345", 650));
         Sale sale = new Sale(catalog, display);
 
         sale.onBarcode("99999");
@@ -41,4 +40,22 @@ public class SellMultipleItemsTest {
 
         assertEquals("No sale in progress. Try scanning a product.", display.getText());
     }
+
+//    @Test
+//    public void severalItemsAllFound() {
+//        Display display = new Display();
+//        Catalog catalog = new Catalog(new HashMap<String, String>() {{
+//            put("1", "$8.50");
+//            put("2", "$12.75");
+//            put("3", "$3.30");
+//        }});
+//        Sale sale = new Sale(catalog, display);
+//
+//        sale.onBarcode("1");
+//        sale.onBarcode("2");
+//        sale.onBarcode("3");
+//        sale.onTotal();
+//
+//        assertEquals("Total: $24.55", display.getText());
+//    }
 }
