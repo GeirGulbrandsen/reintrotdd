@@ -1,7 +1,7 @@
 package com.plusonetesting.rtdd.pointofsale;
 
 public class Display {
-    public String text;
+    private String text;
 
     public String getText() {
         return text;
