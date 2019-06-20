@@ -7,7 +7,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,7 +29,9 @@ public class FormatMonetaryAmountTest {
                 {400, "$4.00"},
                 {0, "$0.00"},
                 {2, "$0.02"},
-                {37, "$0.37"}
+                {37, "$0.37"},
+                {418976, "$4,189.76"},
+                {210832281, "$2,108,322.81"}
         });
     }
 
@@ -42,6 +43,6 @@ public class FormatMonetaryAmountTest {
     }
 
     private static String format(int priceInCents) {
-        return String.format("$%.2f", priceInCents / 100.0d);
+        return String.format("$%,.2f", priceInCents / 100.0d);
     }
 }
