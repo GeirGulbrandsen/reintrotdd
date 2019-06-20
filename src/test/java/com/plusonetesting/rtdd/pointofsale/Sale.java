@@ -17,7 +17,7 @@ public class Sale {
         }
 
         scannedPrice = catalog.findPrice(barcode);
-        if (scannedPrice ==null) {
+        if (scannedPrice == null) {
             display.displayProductNotFoundMessage(barcode);
         } else {
             display.displayPrice(scannedPrice);
