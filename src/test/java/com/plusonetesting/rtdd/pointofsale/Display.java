@@ -11,8 +11,8 @@ public class Display {
         return text;
     }
 
-    public void displayText(String priceAsText) {
-        this.text = priceAsText;
+    public void displayText(String text) {
+        this.text = text;
     }
 
     public void displayProductNotFoundMessage(String barcode) {
