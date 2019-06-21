@@ -11,10 +11,6 @@ public class Display {
         return text;
     }
 
-    public void displayText(String text) {
-        this.text = text;
-    }
-
     public void displayProductNotFoundMessage(String barcode) {
         this.text = "Product not found for " + barcode;
     }
@@ -36,6 +32,6 @@ public class Display {
     }
 
     public void displayPrice(Integer priceInCents) {
-        displayText(format(priceInCents));
+        this.text = format(priceInCents);
     }
 }
