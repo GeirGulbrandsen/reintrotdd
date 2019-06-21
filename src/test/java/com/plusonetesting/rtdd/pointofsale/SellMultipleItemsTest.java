@@ -62,7 +62,6 @@ public class SellMultipleItemsTest {
     }
 
     @Test
-    @Ignore("Refactoring")
     public void severalItemsAllFound() {
         Display display = new Display();
         Catalog catalog = new Catalog(new HashMap<String, Integer>() {{
