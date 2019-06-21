@@ -29,7 +29,7 @@ public class Sale {
     }
 
     public void onTotal() {
-        boolean saleInProgress = (!pendingPurchaseItemPrices.isEmpty());
+        boolean saleInProgress = !pendingPurchaseItemPrices.isEmpty();
         if (saleInProgress) {
             display.displayPurchaseTotal(pendingPurchaseTotal());
         } else {
