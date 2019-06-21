@@ -3,10 +3,9 @@ package com.plusonetesting.rtdd.pointofsale;
 public class Display {
     private String text;
 
-    //    SMELL Move this behaviour somewhere else
-        public static String format(int priceInCents) {
-            return String.format("$%,.2f", priceInCents / 100.0d);
-        }
+    public static String format(int priceInCents) {
+        return String.format("$%,.2f", priceInCents / 100.0d);
+    }
 
     public String getText() {
         return text;
