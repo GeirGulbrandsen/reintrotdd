@@ -19,7 +19,7 @@ public class SellMultipleItemsTest {
 
     @Test
     public void oneItemFound() {
-        Catalog catalog = new Catalog(Collections.singletonMap("12345", "$6.50"), Collections.singletonMap("12345", 650));
+        Catalog catalog = new Catalog(Collections.singletonMap("12345", 650));
         Display display = new Display();
         Sale sale = new Sale(catalog, display);
         sale.onBarcode("12345");
@@ -32,7 +32,7 @@ public class SellMultipleItemsTest {
     @Test
     public void oneItemNotFound() {
         Display display = new Display();
-        Catalog catalog = new Catalog(Collections.singletonMap("12345", "$6.50"), Collections.singletonMap("12345", 650));
+        Catalog catalog = new Catalog(Collections.singletonMap("12345", 650));
         Sale sale = new Sale(catalog, display);
 
         sale.onBarcode("99999");

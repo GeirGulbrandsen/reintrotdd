@@ -3,11 +3,9 @@ package com.plusonetesting.rtdd.pointofsale;
 import java.util.Map;
 
 public class Catalog {
-    private Map<String, String> pricesAsTextByBarcode;
     private Map<String, Integer> pricesInCentsByBarcode;
 
-    public Catalog(Map<String, String> pricesAsTextByBarcode, Map<String, Integer> pricesInCentsByBarcode) {
-        this.pricesAsTextByBarcode = pricesAsTextByBarcode;
+    public Catalog(Map<String, Integer> pricesInCentsByBarcode) {
         this.pricesInCentsByBarcode = pricesInCentsByBarcode;
     }
 

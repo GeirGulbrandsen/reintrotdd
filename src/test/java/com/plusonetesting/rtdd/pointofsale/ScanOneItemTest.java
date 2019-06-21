@@ -16,10 +16,7 @@ public class ScanOneItemTest {
     @Before
     public void setUp() {
         display = new Display();
-        sale = new Sale(new Catalog(new HashMap<String, String>() {{
-            put("12345", "$7.95");
-            put("23456", "$12.50");
-        }}, new HashMap<String, Integer>() {{
+        sale = new Sale(new Catalog(new HashMap<String, Integer>() {{
             put("12345", 795);
             put("23456", 1250);
         }}), display);
