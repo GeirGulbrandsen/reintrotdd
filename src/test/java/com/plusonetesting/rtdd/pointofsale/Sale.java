@@ -31,10 +31,14 @@ public class Sale {
     public void onTotal() {
         boolean saleInProgress = (!pendingPurchaseItemPrices.isEmpty());
         if (saleInProgress) {
-            display.displayPurchaseTotal(Display.format(pendingPurchaseItemPrices.iterator().next()));
+            display.displayPurchaseTotal(pendingPurchaseTotal());
         } else {
             display.displayNoSaleInProgressMessage();
         }
+    }
+//REFACTOR Looks like Model behaviour to me
+    private Integer pendingPurchaseTotal() {
+        return pendingPurchaseItemPrices.iterator().next();
     }
 
 }
