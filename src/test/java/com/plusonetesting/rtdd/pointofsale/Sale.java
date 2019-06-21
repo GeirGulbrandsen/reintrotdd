@@ -41,8 +41,14 @@ public class Sale {
         return computePurchaseTotal(pendingPurchaseItemPrices);
     }
 
-    private static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
-        return purchaseItemPrices.iterator().next();
+    public static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
+        if (purchaseItemPrices.isEmpty()) {
+            return 0;
+        } else if (purchaseItemPrices.size() == 1) {
+            return purchaseItemPrices.iterator().next();
+        } else {
+            return purchaseItemPrices.stream().reduce(0, Integer::sum);
+        }
     }
 
 }
