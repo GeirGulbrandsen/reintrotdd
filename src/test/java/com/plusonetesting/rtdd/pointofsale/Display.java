@@ -3,7 +3,7 @@ package com.plusonetesting.rtdd.pointofsale;
 public class Display {
     private String text;
 
-    public static String format(int priceInCents) {
+    public static String formatMonetaryAmount(int priceInCents) {
         return String.format("$%,.2f", priceInCents / 100.0d);
     }
 
@@ -28,10 +28,10 @@ public class Display {
     }
 
     public void displayPurchaseTotal(Integer purchaseTotal) {
-        this.text = "Total: " + format(purchaseTotal);
+        this.text = "Total: " + formatMonetaryAmount(purchaseTotal);
     }
 
     public void displayPrice(Integer priceInCents) {
-        this.text = format(priceInCents);
+        this.text = formatMonetaryAmount(priceInCents);
     }
 }
