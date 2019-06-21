@@ -36,19 +36,14 @@ public class Sale {
             display.displayPurchaseTotal(pendingPurchaseTotal());
         }
     }
-//REFACTOR Looks like Model behaviour to me
+
+    //REFACTOR Looks like Model behaviour to me
     private Integer pendingPurchaseTotal() {
         return computePurchaseTotal(pendingPurchaseItemPrices);
     }
 
     public static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
-        if (purchaseItemPrices.isEmpty()) {
-            return 0;
-        } else if (purchaseItemPrices.size() == 1) {
-            return purchaseItemPrices.iterator().next();
-        } else {
-            return purchaseItemPrices.stream().reduce(0, Integer::sum);
-        }
+        return purchaseItemPrices.stream().reduce(0, Integer::sum);
     }
 
 }
