@@ -39,10 +39,7 @@ public class FormatMonetaryAmountTest {
     @Test
     public void test() {
 
-        assertEquals(expectedFormattedPrice, format(priceInCents));
+        assertEquals(expectedFormattedPrice, Catalog.format(priceInCents));
     }
 
-    private static String format(int priceInCents) {
-        return String.format("$%,.2f", priceInCents / 100.0d);
-    }
 }
