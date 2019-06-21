@@ -30,11 +30,10 @@ public class Sale {
     }
 
     public void onTotal() {
-        boolean saleInProgress = !pendingPurchaseItemPrices.isEmpty();
-        if (saleInProgress) {
-            display.displayPurchaseTotal(pendingPurchaseTotal());
-        } else {
+        if (pendingPurchaseItemPrices.isEmpty()) {
             display.displayNoSaleInProgressMessage();
+        } else {
+            display.displayPurchaseTotal(pendingPurchaseTotal());
         }
     }
 //REFACTOR Looks like Model behaviour to me
