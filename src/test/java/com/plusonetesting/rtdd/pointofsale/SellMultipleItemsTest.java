@@ -78,7 +78,6 @@ public class SellMultipleItemsTest {
 
         assertEquals("Total: $24.55", display.getText());
     }
-
     @Test
     public void multipleItemsSomeNotFound() {
         Display display = new Display();
@@ -94,6 +93,23 @@ public class SellMultipleItemsTest {
         sale.onTotal();
 
         assertEquals("Total: $17.00", display.getText());
+    }
+
+    @Test
+    public void severalItemsOfWhichOneBarcodeIsEmpty() {
+        Display display = new Display();
+        Catalog catalog = new Catalog(new HashMap<String, Integer>() {{
+            put("1", 3100);
+            put("2", 460);
+        }});
+        Sale sale = new Sale(catalog, display);
+
+        sale.onBarcode("1");
+        sale.onBarcode("");
+        sale.onBarcode("2");
+        sale.onTotal();
+
+        assertEquals("Total: $35.60", display.getText());
     }
 
     private Catalog catalogWithoutBarcodes(String... barcodesToExclude) {
