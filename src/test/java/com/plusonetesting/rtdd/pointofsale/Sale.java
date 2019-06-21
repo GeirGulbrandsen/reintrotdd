@@ -16,10 +16,11 @@ public class Sale {
             return;
         }
 
-        scannedPrice = catalog.findPriceThenFormatPrice(barcode);
-        if (scannedPrice == null) {
+        Integer priceInCents = catalog.findPrice(barcode);
+        if (priceInCents == null) {
             display.displayProductNotFoundMessage(barcode);
         } else {
+            scannedPrice = Catalog.format(priceInCents);
             display.displayPrice(scannedPrice);
         }
     }
