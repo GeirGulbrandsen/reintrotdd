@@ -11,7 +11,7 @@ public class Display {
         return text;
     }
 
-    public void displayPrice(String priceAsText) {
+    public void displayText(String priceAsText) {
         this.text = priceAsText;
     }
 
