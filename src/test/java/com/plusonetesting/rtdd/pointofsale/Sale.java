@@ -1,9 +1,12 @@
 package com.plusonetesting.rtdd.pointofsale;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Sale {
     private Display display;
     private Catalog catalog;
-    private String scannedPrice;
+    private Collection<Integer> pendingPurchaseItemPrices = new ArrayList<>();
 
     public Sale(Catalog catalog, Display display) {
         this.display = display;
@@ -20,15 +23,15 @@ public class Sale {
         if (priceInCents == null) {
             display.displayProductNotFoundMessage(barcode);
         } else {
-            scannedPrice = Display.format(priceInCents);
+            pendingPurchaseItemPrices.add(priceInCents);
             display.displayPrice(priceInCents);
         }
     }
 
     public void onTotal() {
-        boolean saleInProgress = (scannedPrice != null);
+        boolean saleInProgress = (!pendingPurchaseItemPrices.isEmpty());
         if (saleInProgress) {
-            display.displayPurchaseTotal(scannedPrice);
+            display.displayPurchaseTotal(Display.format(pendingPurchaseItemPrices.iterator().next()));
         } else {
             display.displayNoSaleInProgressMessage();
         }
