@@ -23,6 +23,7 @@ public class Sale {
         if (priceInCents == null) {
             display.displayProductNotFoundMessage(barcode);
         } else {
+//            REFACTOR Eventually a shopping cart?
             pendingPurchaseItemPrices.add(priceInCents);
             display.displayPrice(priceInCents);
         }
