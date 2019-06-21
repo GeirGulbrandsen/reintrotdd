@@ -34,4 +34,8 @@ public class Display {
     public void displayPurchaseTotal(String price) {
         this.text = "Total: " + price;
     }
+
+    public void displayPrice(Integer priceInCents) {
+        displayText(format(priceInCents));
+    }
 }
