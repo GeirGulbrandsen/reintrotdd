@@ -18,14 +18,14 @@ public class SellOneItemControllerTest {
         final Price irrelevantPrice = Price.cents(795);
 
         context.checking(new Expectations() {{
-            allowing(catalog).findPrice(with("12345"));
+            allowing(catalog).findPrice(with("::product found::"));
             will(returnValue(irrelevantPrice));
 
             oneOf(display).displayPrice(with(irrelevantPrice));
         }});
 
         SaleController saleController = new SaleController(catalog, display);
-        saleController.onBarcode("12345");
+        saleController.onBarcode("::product found::");
     }
 
     @Test
