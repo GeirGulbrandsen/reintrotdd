@@ -1,6 +1,5 @@
 package com.plusonetesting.rtdd.pointofsale;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Collections;

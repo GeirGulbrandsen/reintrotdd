@@ -48,7 +48,7 @@ public class AddFractionTest {
     }
 
     @Test
-    public void comnmonFactorInDenominators() {
+    public void commonFactorInDenominators() {
         assertEquals(new Fraction(11, 18), new Fraction(1,6).plus(new Fraction(4,9)));
     }
 
