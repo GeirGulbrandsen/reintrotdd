@@ -1,6 +1,5 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
-import com.plusonetesting.rtdd.pointofsale.Sale;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
@@ -93,17 +92,4 @@ public class SellOneItemControllerTest {
                 display.displayPrice(price);
         }
     }
-
-
-    public static class Price {
-        public static Price cents(int centsValues) {
-            return new Price();
-        }
-
-        @Override
-        public String toString() {
-            return "a Price";
-        }
-    }
-
 }
