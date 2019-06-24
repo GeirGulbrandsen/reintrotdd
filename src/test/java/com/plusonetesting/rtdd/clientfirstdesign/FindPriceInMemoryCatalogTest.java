@@ -1,6 +1,7 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -8,8 +9,12 @@ import static org.junit.Assert.assertEquals;
 public class FindPriceInMemoryCatalogTest extends FindPriceInCatalogContract {
 
     @Override
-    protected Catalog catalogWith(String barcode, Price price) {
-        return new InMemoryCatalog(Collections.singletonMap(barcode, price));
+    protected Catalog catalogWith(final String barcode, final Price price) {
+        return new InMemoryCatalog(new HashMap<String, Price>() {{
+            put("definitely not " + barcode, Price.cents(0));
+            put(barcode, price);
+            put("once again, definitely not " + barcode, Price.cents(100000000));
+        }});
     }
 
     private class InMemoryCatalog implements Catalog {
