@@ -2,7 +2,6 @@ package com.plusonetesting.rtdd.clientfirstdesign;
 
 import org.junit.Test;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
@@ -18,7 +17,7 @@ public class FindPriceInMemoryCatalogTest {
         assertEquals(foundPrice, catalog.findPrice("12345"));
     }
 
-    private class InMemoryCatalog {
+    private class InMemoryCatalog implements Catalog {
         private Map<String, Price> pricesByBarcode;
 
         public InMemoryCatalog(Map<String, Price> pricesByBarcode) {
@@ -32,7 +31,6 @@ public class FindPriceInMemoryCatalogTest {
 
     @Test
     public void productNotFound() {
-
         InMemoryCatalog catalog = new InMemoryCatalog((Collections.emptyMap()));
         assertEquals(null, catalog.findPrice("12345"));
 
