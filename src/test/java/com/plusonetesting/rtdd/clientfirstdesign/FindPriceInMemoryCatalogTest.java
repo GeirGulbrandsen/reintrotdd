@@ -40,6 +40,8 @@ public class FindPriceInMemoryCatalogTest {
     }
 
     private Catalog catalogWithout(String barcodeToAvoid) {
-        return new InMemoryCatalog((Collections.emptyMap()));
+        return new InMemoryCatalog((Collections.singletonMap(
+                "anyting but " + barcodeToAvoid, Price.cents(0)
+        )));
     }
 }
