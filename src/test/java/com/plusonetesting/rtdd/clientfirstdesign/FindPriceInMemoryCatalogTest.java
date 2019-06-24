@@ -1,23 +1,14 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
-import org.junit.Test;
-
 import java.util.Collections;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class FindPriceInMemoryCatalogTest {
+public class FindPriceInMemoryCatalogTest extends FindPriceInCatalogContract {
 
-    @Test
-    public void productFound() {
-        Price foundPrice = Price.cents(1250);
-
-        Catalog catalog = catalogWith("12345", foundPrice);
-        assertEquals(foundPrice, catalog.findPrice("12345"));
-    }
-
-    private Catalog catalogWith(String barcode, Price price) {
+    @Override
+    protected Catalog catalogWith(String barcode, Price price) {
         return new InMemoryCatalog(Collections.singletonMap(barcode, price));
     }
 
@@ -33,13 +24,8 @@ public class FindPriceInMemoryCatalogTest {
         }
     }
 
-    @Test
-    public void productNotFound() {
-        Catalog catalog = catalogWithout("12345");
-        assertEquals(null, catalog.findPrice("12345"));
-    }
-
-    private Catalog catalogWithout(String barcodeToAvoid) {
+    @Override
+    protected Catalog catalogWithout(String barcodeToAvoid) {
         return new InMemoryCatalog((Collections.singletonMap(
                 "anyting but " + barcodeToAvoid, Price.cents(0)
         )));
