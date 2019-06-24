@@ -1,5 +1,6 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
+import com.plusonetesting.rtdd.pointofsale.Sale;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
@@ -43,6 +44,19 @@ public class SellOneItemControllerTest {
         saleController.onBarcode("::product not found::");
     }
 
+    @Test
+    public void emptyBarcode() {
+        Display display = context.mock(Display.class);
+
+        context.checking(new Expectations() {{
+
+            oneOf(display).displayEmptyBarcodeMessage();
+        }});
+
+        SaleController saleController = new SaleController(null, display);
+        saleController.onBarcode("");
+    }
+
     public interface Catalog {
         Price findPrice(String barCode);
     }
@@ -51,6 +65,8 @@ public class SellOneItemControllerTest {
         void displayPrice(Price price);
 
         void displayProductNotFoundMessage(String barcodeNotFound);
+
+        void displayEmptyBarcodeMessage();
     }
 
     public static class SaleController {
@@ -62,11 +78,16 @@ public class SellOneItemControllerTest {
             this.display = display;
         }
 
-        public void onBarcode(String barCode) {
-            Price price = catalog.findPrice(barCode);
+        public void onBarcode(String barcode) {
+            if ("".equals(barcode)) {
+                display.displayEmptyBarcodeMessage();
+                return;
+            }
+
+            Price price = catalog.findPrice(barcode);
 
             if (price == null)
-                display.displayProductNotFoundMessage(barCode);
+                display.displayProductNotFoundMessage(barcode);
             else
                 display.displayPrice(price);
         }
