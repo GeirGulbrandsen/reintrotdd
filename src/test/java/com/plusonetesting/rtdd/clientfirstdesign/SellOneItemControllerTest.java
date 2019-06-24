@@ -79,6 +79,7 @@ public class SellOneItemControllerTest {
         }
 
         public void onBarcode(String barcode) {
+            //SMELL Should I get an empty barcode at all? Ever?
             if ("".equals(barcode)) {
                 display.displayEmptyBarcodeMessage();
                 return;
