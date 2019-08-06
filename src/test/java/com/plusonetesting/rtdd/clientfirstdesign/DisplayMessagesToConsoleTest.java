@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class DisplayMessagesToConsoleTest {
 
@@ -32,7 +33,7 @@ public class DisplayMessagesToConsoleTest {
         new ConsoleDisplay().displayProductNotFoundMessage("12324545");
 
         Assert.assertEquals(
-                Arrays.asList("Product not found for 12324545"),
+                Collections.singletonList("Product not found for 12324545"),
                 TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
         );
     }
@@ -44,7 +45,7 @@ public class DisplayMessagesToConsoleTest {
 
         new ConsoleDisplay().displayEmptyBarcodeMessage();
         Assert.assertEquals(
-                Arrays.asList("Scanning error: empty barcode."),
+                Collections.singletonList("Scanning error: empty barcode."),
                 TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
         );
     }
