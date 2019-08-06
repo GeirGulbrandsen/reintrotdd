@@ -10,7 +10,6 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class LearnHowToHijackSystemOutTest {
 
@@ -36,7 +35,7 @@ public class LearnHowToHijackSystemOutTest {
 
         Assert.assertEquals(
                 Collections.singletonList("Hello, world."),
-                lines(canvas.toString(StandardCharsets.UTF_8)));
+                TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8)));
     }
 
     @Test
@@ -51,14 +50,6 @@ public class LearnHowToHijackSystemOutTest {
 
         Assert.assertEquals(
                 Arrays.asList("Line 1", "Line 2", "Line 3", "Line 4", "Line 5"),
-                lines(canvas.toString(StandardCharsets.UTF_8)));
+                TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8)));
     }
-
-    // REFACTOR Move this into a reusable library OR
-    // find a library that implements this much more reliably.
-    private static List<String> lines(String text) {
-        return Arrays.asList(text.split(System.lineSeparator()));
-    }
-
-
 }
