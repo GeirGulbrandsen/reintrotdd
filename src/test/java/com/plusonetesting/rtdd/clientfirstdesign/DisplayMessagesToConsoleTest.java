@@ -30,10 +30,10 @@ public class DisplayMessagesToConsoleTest {
         ByteArrayOutputStream canvas = new ByteArrayOutputStream();
         System.setOut(new PrintStream(canvas));
 
-        new ConsoleDisplay().displayProductNotFoundMessage("91837248");
+        new ConsoleDisplay().displayProductNotFoundMessage("12324545");
 
         Assert.assertEquals(
-                Arrays.asList("Product not found for 91837248"),
+                Arrays.asList("Product not found for 12324545"),
                 TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
         );
     }
@@ -41,7 +41,7 @@ public class DisplayMessagesToConsoleTest {
     public static class ConsoleDisplay {
 
         public void displayProductNotFoundMessage(String barcodeNotFound) {
-            System.out.println("Product not found for 91837248");
+            System.out.println(String.format("Product not found for %s", barcodeNotFound));
         }
     }
 }
