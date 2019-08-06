@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
