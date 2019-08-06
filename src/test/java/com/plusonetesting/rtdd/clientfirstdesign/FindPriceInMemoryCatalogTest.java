@@ -32,7 +32,7 @@ public class FindPriceInMemoryCatalogTest extends FindPriceInCatalogContract {
     @Override
     protected Catalog catalogWithout(String barcodeToAvoid) {
         return new InMemoryCatalog((Collections.singletonMap(
-                "anyting but " + barcodeToAvoid, Price.cents(0)
+                "anything but " + barcodeToAvoid, Price.cents(0)
         )));
     }
 }
