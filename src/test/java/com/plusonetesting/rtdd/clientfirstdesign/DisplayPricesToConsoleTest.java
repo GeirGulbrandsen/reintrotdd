@@ -38,11 +38,11 @@ public class DisplayPricesToConsoleTest {
 
     @Test
     public void test() {
-        assertEquals(expectedFormattedPrice, format(priceInCents));
+        assertEquals(expectedFormattedPrice, format(Price.cents(priceInCents)));
     }
 
-    private static String format(int priceInCents) {
-        return String.format("$%,.2f", priceInCents/100.0d);
+    private static String format(Price cents) {
+        return String.format("$%,.2f", cents.dollarValue());
     }
 }
 
