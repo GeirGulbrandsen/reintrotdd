@@ -13,10 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.runners.Parameterized.*;
+import static org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class DisplayPricesToConsoleTest {
@@ -54,7 +52,6 @@ public class DisplayPricesToConsoleTest {
         });
     }
 
-
     @Test
     public void test() {
         ByteArrayOutputStream canvas = new ByteArrayOutputStream();
@@ -64,9 +61,8 @@ public class DisplayPricesToConsoleTest {
 
         Assert.assertEquals(
                 Collections.singletonList(expectedFormattedPrice),
-                        TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
+                TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
         );
     }
-
 }
 
