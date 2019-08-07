@@ -67,7 +67,7 @@ public class DisplayMessagesToConsoleTest {
                         "Scanning error: empty barcode.",
                         "Product not found for 3459087",
                         "Scanning error: empty barcode."
-                        ),
+                ),
                 TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
         );
     }

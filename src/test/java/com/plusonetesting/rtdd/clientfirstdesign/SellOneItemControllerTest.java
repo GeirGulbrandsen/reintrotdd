@@ -55,5 +55,4 @@ public class SellOneItemControllerTest {
         SaleController saleController = new SaleController(null, display);
         saleController.onBarcode("");
     }
-
 }

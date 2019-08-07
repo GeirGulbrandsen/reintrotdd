@@ -12,7 +12,7 @@ public class Price {
     }
 
     public double dollarValue() {
-        return centsValue/100.0d;
+        return centsValue / 100.0d;
     }
 
     @Override
