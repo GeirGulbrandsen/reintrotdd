@@ -2,8 +2,7 @@ package com.plusonetesting.rtdd.addfractions;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class FractionEqualsTest {
 
@@ -36,5 +35,20 @@ public class FractionEqualsTest {
     public void negativeDenominator() {
         assertEquals(new Fraction(1,2), new Fraction(-1,-2));
         assertEquals(new Fraction(-1,2), new Fraction(1,-2));
+    }
+
+    @Test
+    public void otherIsNotInstanceOfFraction() {
+        assertNotEquals(new Fraction(3, 5), "Cheese");
+    }
+
+    @Test
+    public void returnsHashCode() {
+        assertEquals(new Fraction(2, 6).hashCode(), 22);
+    }
+
+    @Test
+    public void toStringFormatting() {
+        assertEquals(new Fraction(3, 5).toString(), "3/5");
     }
 }
