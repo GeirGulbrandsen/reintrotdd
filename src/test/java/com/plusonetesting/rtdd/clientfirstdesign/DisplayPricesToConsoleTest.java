@@ -1,17 +1,36 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.runners.Parameterized.*;
 
 @RunWith(Parameterized.class)
 public class DisplayPricesToConsoleTest {
+    private PrintStream productionSystemOut;
+
+    @Before
+    public void rememberSystemOut() {
+        productionSystemOut = System.out;
+    }
+
+    @After
+    public void restoreSystemOut() {
+        System.setOut(productionSystemOut);
+    }
 
     private final int priceInCents;
     private final String expectedFormattedPrice;
@@ -38,11 +57,16 @@ public class DisplayPricesToConsoleTest {
 
     @Test
     public void test() {
-        assertEquals(expectedFormattedPrice, format(Price.cents(priceInCents)));
+        ByteArrayOutputStream canvas = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(canvas));
+
+        new ConsoleDisplay().displayPrice(Price.cents(priceInCents));
+
+        Assert.assertEquals(
+                Collections.singletonList(expectedFormattedPrice),
+                        TextUtilities.lines(canvas.toString(StandardCharsets.UTF_8))
+        );
     }
 
-    private static String format(Price cents) {
-        return String.format("$%,.2f", cents.dollarValue());
-    }
 }
 
