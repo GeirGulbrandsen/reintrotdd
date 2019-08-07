@@ -1,10 +1,10 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
-public class ConsoleDisplay implements Display {
+public class EnglishLanguageConsoleDisplay implements Display {
 
-    public static final String PRODUCT_NOT_FOUND_FOR_MESSAGE_FORMAT = "Product not found for %s";
-    public static final String SCANNING_ERROR_EMPTY_BARCODE_MESSAGE_FORMAT = "Scanning error: empty barcode.";
-    public static final String PRICE_IN_DOLLARS_MESSAGE_FORMAT = "$%,.2f";
+    private static final String PRODUCT_NOT_FOUND_FOR_MESSAGE_FORMAT = "Product not found for %s";
+    private static final String SCANNING_ERROR_EMPTY_BARCODE_MESSAGE_FORMAT = "Scanning error: empty barcode.";
+    private static final String PRICE_IN_DOLLARS_MESSAGE_FORMAT = "$%,.2f";
 
     private void render(String text) {
         System.out.println(text);
@@ -14,7 +14,7 @@ public class ConsoleDisplay implements Display {
         return String.format(messageTemplate, placeHolderValues);
     }
 
-    public void displayMessage(String messageTemplate, Object... placeHolderValues) {
+    private void displayMessage(String messageTemplate, Object... placeHolderValues) {
         render(mergeTemplate(messageTemplate, placeHolderValues));
     }
 
