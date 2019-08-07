@@ -1,6 +1,6 @@
 package com.plusonetesting.rtdd.clientfirstdesign;
 
-public class ConsoleDisplay {
+public class ConsoleDisplay implements Display {
 
     public static final String PRODUCT_NOT_FOUND_FOR_MESSAGE_FORMAT = "Product not found for %s";
     public static final String SCANNING_ERROR_EMPTY_BARCODE_MESSAGE_FORMAT = "Scanning error: empty barcode.";
